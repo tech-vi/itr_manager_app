@@ -19,7 +19,8 @@ const PORT = 3000;
 
 const app = express();
 
-const whitelist = ["http://localhost:5173", "http://localhost:3000"];
+// const whitelist = ["http://localhost:5173", "http://localhost:3000"];
+const whitelist = [process.env.CLIENT_APP_BASE_URL, "http://localhost:5173"];
 const corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1 || !origin) {
