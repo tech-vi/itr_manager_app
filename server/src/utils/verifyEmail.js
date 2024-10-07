@@ -10,6 +10,10 @@ const currentDirectory = dirname(fileURLToPath(currentFilePath));
 
 dotenv.config();
 
+const clientBaseUrl = process.env.CLIENT_APP_BASE_URL;
+
+const contactEmail = process.env.NODEMAILER_USER;
+
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   port: 587,
@@ -24,7 +28,7 @@ async function sendVerificationEmail(email, verification_token, fname) {
   try {
     const renderedContent = await ejs.renderFile(
       `${currentDirectory}/../templates/verification_mail.ejs`,
-      { verification_token, fname }
+      { clientBaseUrl, verification_token, fname, contactEmail }
     );
 
     const mailOptions = {

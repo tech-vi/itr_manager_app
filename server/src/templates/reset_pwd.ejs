@@ -118,7 +118,10 @@
           in below to get started.!
         </p>
         <div class="btn-container">
-          <a class="reset-btn" href="http://localhost:5173/reset_pwd/<%=token%>"
+          <!-- <a class="reset-btn" href="http://localhost:5173/reset_pwd/<%=token%>"
+            >Reset Password</a
+          > -->
+          <a class="reset-btn" href="<%=clientBaseUrl%>/reset_pwd/<%=token%>"
             >Reset Password</a
           >
         </div>
@@ -130,12 +133,13 @@
           If you didn't request a password reset, please ignore this email.
           <br />
           Need further assistence?
-          <a
+          <!-- <a
             class="contact-us"
             href="mailto:tech.virtualindia@gmail.com
           "
             >Contact us</a
-          >
+          > -->
+          <a class="contact-us" href="mailto:<%=contactEmail%>">Contact us</a>
         </p>
         <p>- Virtual India Team</p>
       </section>

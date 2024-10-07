@@ -110,12 +110,19 @@
         <h2>Welcome to Virtual India.!</h2>
         <h3>Dear <%=fname%>,</h3>
         <p>
-          We’re excited to welcome you to <span>Virtual India</span>. Before we can get started, we need to verify your email address. Please click the link below to confirm your email address:
+          We’re excited to welcome you to <span>Virtual India</span>. Before we
+          can get started, we need to verify your email address. Please click
+          the link below to confirm your email address:
         </p>
         <div class="btn-container">
-          <a
+          <!-- <a
             class="reset-btn"
             href="http://localhost:5173/verify_email/<%=verification_token%>"
+            >Verify Your Email</a
+          > -->
+          <a
+            class="reset-btn"
+            href="<%=clientBaseUrl%>/verify_email/<%=verification_token%>"
             >Verify Your Email</a
           >
         </div>
@@ -127,12 +134,13 @@
           If you did not sign up for our service, please ignore this email.
           <br />
           Need further assistence?
-          <a
+          <!-- <a
             class="contact-us"
             href="mailto:tech.virtualindia@gmail.com
           "
             >Contact us</a
-          >
+          > -->
+          <a class="contact-us" href="mailto:<%=contactEmail%>">Contact us</a>
         </p>
         <p>- Virtual India Team</p>
       </section>

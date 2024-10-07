@@ -10,6 +10,10 @@ const currentDirectory = dirname(fileURLToPath(currentFilePath));
 
 dotenv.config();
 
+const clientBaseUrl = process.env.CLIENT_APP_BASE_URL;
+
+const contactEmail = process.env.NODEMAILER_USER;
+
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   port: 587,
@@ -24,7 +28,7 @@ async function sendPwdResetLink(email, token, fname) {
   try {
     const renderedContent = await ejs.renderFile(
       `${currentDirectory}/../templates/reset_pwd.ejs`,
-      { token, fname }
+      { clientBaseUrl, token, fname, contactEmail }
     );
 
     const mailOptions = {
