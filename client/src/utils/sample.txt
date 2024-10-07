@@ -1,0 +1,331 @@
+// # accessorKey method
+
+export const columns2 = [
+  {
+    accessorKey: "serialNo",
+    header: "#",
+    cell: (info) => info.row.index + 1,
+    enableSorting: false,
+  },
+  {
+    accessorKey: "pan_number",
+    header: "PAN Number",
+    cell: ({ getValue }) => <span>{getValue()}</span>,
+  },
+  {
+    accessorKey: "client_name",
+    header: "Name as per PAN",
+    cell: ({ getValue }) => <span>{getValue()}</span>,
+  },
+  {
+    accessorKey: "mobile_number",
+    header: "Mobile Number",
+    cell: ({ getValue }) => <span>{getValue()}</span>,
+  },
+  {
+    accessorKey: "password",
+    header: "Password",
+    cell: ({ getValue }) => <span>{getValue()}</span>,
+    enableSorting: false,
+  },
+  {
+    accessorKey: "financial_year",
+    header: "Financial Year",
+    cell: ({ getValue }) => {
+      const financialYear = getValue();
+      return <span>{financialYear?.title}</span>;
+    },
+    enableSorting: false,
+  },
+  {
+    accessorKey: "assessment_year",
+    header: "Assessment Year",
+    cell: ({ getValue }) => <span>{getValue()}</span>,
+    enableSorting: false,
+  },
+  {
+    accessorKey: "itr_form_type",
+    header: "ITR Form Type",
+    cell: ({ getValue }) => {
+      const itrFormType = getValue();
+      return <span>{itrFormType?.title}</span>;
+    },
+    enableSorting: false,
+  },
+  {
+    accessorKey: "itr_form_status",
+    header: "ITR Form Status",
+    cell: ({ getValue }) => {
+      const itrFormStatus = getValue();
+      return <span>{itrFormStatus?.title}</span>;
+    },
+    enableSorting: false,
+  },
+  {
+    accessorKey: "fee_status",
+    header: "Fee Status",
+    cell: ({ getValue }) => {
+      const feeStatus = getValue();
+      return <span>{feeStatus?.title}</span>;
+    },
+    enableSorting: false,
+  },
+  {
+    accessorKey: "revised",
+    header: "ITR Form Mode",
+    cell: ({ getValue }) => {
+      const isRevised = getValue();
+      return <span>{isRevised ? "Revised" : "Original"}</span>;
+    },
+    enableSorting: false,
+  },
+  {
+    accessorKey: "added_by",
+    header: "Added By",
+    cell: ({ getValue }) => {
+      const addedBy = getValue();
+      return (
+        <span>
+          {addedBy?.fname} {addedBy?.lname}
+        </span>
+      );
+    },
+    enableSorting: false,
+  },
+  {
+    accessorKey: "edited_by",
+    header: "Edited By",
+    cell: ({ getValue }) => {
+      const editedBy = getValue();
+      return (
+        <span>
+          {editedBy?.fname} {editedBy?.lname}
+        </span>
+      );
+    },
+    enableSorting: false,
+  },
+  {
+    accessorKey: "_id",
+    header: "ID",
+    enableSorting: false,
+  },
+  {
+    accessorKey: "createdAt",
+    header: "Created At",
+    cell: ({ getValue }) => <span>{convertUTCtoIST(getValue())}</span>,
+  },
+  {
+    accessorKey: "updatedAt",
+    header: "Updated At",
+    cell: ({ getValue }) => <span>{convertUTCtoIST(getValue())}</span>,
+  },
+  {
+    accessorKey: "actions",
+    header: "Actions",
+    id: "actions",
+    cell: ({ row }) => <RowActions data={row.original} />,
+    enableSorting: false,
+  },
+];
+
+
+
+
+
+// # filter
+
+<Row className="mb-3">
+        <Col xs={12} md={3}>
+          <Form.Group>
+            <Form.Select size="sm"
+              onChange={(e) => handleFilterChange(e, "financialYear")}
+              value={financialYearFilter}
+            >
+              <option value="">Financial Year</option>
+              {financialYearData?.length &&
+                financialYearData?.map((financialYear) => (
+                  <option key={financialYear._id} value={financialYear._id}>
+                    {financialYear.title}
+                  </option>
+                ))}
+            </Form.Select>
+          </Form.Group>
+        </Col>
+        <Col xs={12} md={3}>
+          <Form.Group>
+            <Form.Select size="sm"
+              onChange={(e) => handleFilterChange(e, "itrFormType")}
+              value={itrFormTypeFilter}
+            >
+              <option value="">ITR Form Type</option>
+              {itrFormTypeData?.length &&
+                itrFormTypeData?.map((itrFormType) => (
+                  <option key={itrFormType._id} value={itrFormType._id}>
+                    {itrFormType.title}
+                  </option>
+                ))}
+            </Form.Select>
+          </Form.Group>
+        </Col>
+        <Col xs={12} md={3}>
+          <Form.Group>
+            <Form.Select size="sm"
+              onChange={(e) => handleFilterChange(e, "itrFormStatus")}
+              value={itrFormStatusFilter}
+            >
+              <option value="">ITR Form Status</option>
+              {itrFormStatusData?.length &&
+                itrFormStatusData?.map((itrFormStatus) => (
+                  <option key={itrFormStatus._id} value={itrFormStatus._id}>
+                    {itrFormStatus.title}
+                  </option>
+                ))}
+            </Form.Select>
+          </Form.Group>
+        </Col>
+        <Col xs={12} md={3}>
+          <Form.Group>
+            <Form.Select size="sm"
+              onChange={(e) => handleFilterChange(e, "feeStatus")}
+              value={feeStatusFilter}
+            >
+              <option value="">Fee Status</option>
+              {feeStatusData?.length &&
+                feeStatusData?.map((feeStatus) => (
+                  <option key={feeStatus._id} value={feeStatus._id}>
+                    {feeStatus.title}
+                  </option>
+                ))}
+            </Form.Select>
+          </Form.Group>
+        </Col>
+      </Row>
+
+
+
+
+
+
+export const columns = [
+  {
+    id: "select",
+    header: ({ table }) => (
+      <Form.Check
+        type="checkbox"
+        checked={table.getIsAllRowsSelected()}
+        onChange={table.getToggleAllRowsSelectedHandler()}
+      />
+    ),
+
+    cell: ({ row }) => (
+      <Form.Check
+        type="checkbox"
+        checked={row.getIsSelected()}
+        onChange={row.getToggleSelectedHandler()}
+      />
+    ),
+    enableSorting: false,
+  },
+  {
+    accessorKey: "Serial No",
+    header: "#",
+    cell: (info) => info.row.index + 1,
+    enableSorting: false,
+  },
+  {
+    header: "PAN Number",
+    accessorFn: (row) => `${row.pan_number}`,
+  },
+  {
+    header: "Name as per PAN",
+    accessorFn: (row) => `${row.client_name}`,
+  },
+  {
+    header: "Mobile Number",
+    accessorFn: (row) => `${row.mobile_number}`,
+    enableSorting: false,
+  },
+  {
+    header: "Password",
+    accessorFn: (row) => `${row.password}`,
+    enableSorting: false,
+  },
+  {
+    header: "Financial Year",
+    accessorKey: "financial_year",
+    accessorFn: (row) => `${row.financial_year?.title}`,
+    filterFn: "customFilterFn",
+    enableSorting: false,
+  },
+  {
+    header: "Assessment Year",
+    accessorFn: (row) => `${row.assessment_year}`,
+    enableSorting: false,
+  },
+  {
+    header: "ITR Form Type",
+    accessorKey: "itr_form_type",
+    accessorFn: (row) => `${row.itr_form_type?.title}`,
+    filterFn: "customFilterFn",
+    enableSorting: false,
+  },
+  {
+    header: "ITR Form Status",
+    accessorKey: "itr_form_status",
+    accessorFn: (row) => `${row.itr_form_status?.title}`,
+    filterFn: "customFilterFn",
+    enableSorting: false,
+  },
+  {
+    header: "Fee Status",
+    // header: ({ column }) => <FilterBy column={column} />,
+    accessorKey: "fee_status",
+    accessorFn: (row) => `${row.fee_status?.title}`,
+    filterFn: "customFilterFn",
+    enableSorting: false,
+  },
+  {
+    header: "ITR Form Mode",
+    accessorFn: (row) => (row.revised ? "Revised" : "Original"),
+    enableSorting: false,
+  },
+  {
+    header: "Added By",
+    accessorFn: (row) => {
+      return row.added_by
+        ? `${row.added_by?.fname} ${row.added_by?.lname}`
+        : "";
+    },
+    enableSorting: false,
+  },
+  {
+    header: "Edited By",
+    accessorFn: (row) => {
+      return row.edited_by
+        ? `${row.edited_by?.fname} ${row.edited_by?.lname}`
+        : "";
+    },
+    enableSorting: false,
+  },
+  {
+    header: "Created At",
+    accessorFn: (row) => `${convertUTCtoIST(row.createdAt)}`,
+  },
+  {
+    header: "Updated At",
+    accessorFn: (row) => `${convertUTCtoIST(row.updatedAt)}`,
+  },
+  {
+    accessorKey: "Actions",
+    header: "Actions",
+    id: "actions",
+    cell: ({ row }) => <RowActions data={row.original} />,
+    enableSorting: false,
+  },
+  {
+    accessorKey: "_id",
+    header: "ID",
+    enableSorting: false,
+  },
+];
