@@ -29,10 +29,8 @@ const Register = () => {
       .string()
       .min(1, { message: "First name is required!" })
       .min(3, { message: "First name must be at least 3 characters!" }),
-    lname: z
-      .string()
-      .min(1, { message: "Last name is required!" })
-      .min(3, { message: "Last name must be at least 3 characters!" }),
+    lname: z.string().min(1, { message: "Last name is required!" }),
+    // .min(3, { message: "Last name must be at least 3 characters!" }),
     email: z
       .string()
       .min(1, { message: "Email is required!" })
