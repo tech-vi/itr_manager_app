@@ -58,6 +58,7 @@ const registerUser = async (req, res, next) => {
         user.fname
       );
       if (verificationEmailResponse.error) {
+        console.log(verificationEmailResponse.error)
         const err = new Error("Failed to send verification link.!");
         res.statusCode = 500;
         return next(err);
