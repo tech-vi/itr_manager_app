@@ -28,10 +28,14 @@ const transporter = nodemailer.createTransport({
 async function sendVerificationEmail(email, verification_token, fname) {
   try {
     // const templatePath = `${currentDirectory}/../templates/verification_mail.ejs`;
-    const templatePath = path.join(
+    const templatePath = path.resolve(
       currentDirectory,
-      "../public/templates/verification_mail.ejs"
+      "../../public/templates/verification_mail.ejs"
     );
+    // const templatePath = path.join(
+    //   currentDirectory,
+    //   "../public/templates/verification_mail.ejs"
+    // );
 
     console.log("Template path:", templatePath);
     const renderedContent = await ejs.renderFile(templatePath, {
