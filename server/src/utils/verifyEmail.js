@@ -25,8 +25,7 @@ const transporter = nodemailer.createTransport({
 
 async function sendVerificationEmail(email, verification_token, fname) {
   try {
-    // const templatePath = `${currentDirectory}/../templates/verification_mail.ejs`;
-    const templatePath=`<h3>Hi</h3>`
+    const templatePath = `${currentDirectory}/../templates/verification_mail.ejs`;
     console.log("Template path:", templatePath);
     const renderedContent = await ejs.renderFile(templatePath, {
       clientBaseUrl,
