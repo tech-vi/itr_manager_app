@@ -5,8 +5,10 @@ import { dirname } from "path";
 import dotenv from "dotenv";
 
 const currentFilePath = import.meta.url;
+console.log("currentFilePath", currentFilePath);
 const currentDirectory = dirname(fileURLToPath(currentFilePath));
-// # currentDirectory = D:\VI_Projects\theia\server\src\utils
+console.log("currentDirectory", currentDirectory);
+// # currentDirectory = server\src\utils
 
 dotenv.config();
 
@@ -31,8 +33,7 @@ async function sendVerificationEmail(email, verification_token, fname) {
       { clientBaseUrl, verification_token, fname, contactEmail }
     );
 
-
-    console.log(renderedContent)
+    console.log("renderedContent", currentDirectory);
 
     const mailOptions = {
       from: process.env.NODEMAILER_USER,
