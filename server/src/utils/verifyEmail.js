@@ -5,10 +5,7 @@ import { dirname } from "path";
 import dotenv from "dotenv";
 
 const currentFilePath = import.meta.url;
-console.log("currentFilePath", currentFilePath);
 const currentDirectory = dirname(fileURLToPath(currentFilePath));
-console.log("currentDirectory", currentDirectory);
-// # currentDirectory = server\src\utils
 
 dotenv.config();
 
@@ -28,7 +25,8 @@ const transporter = nodemailer.createTransport({
 
 async function sendVerificationEmail(email, verification_token, fname) {
   try {
-    const templatePath = `${currentDirectory}/../templates/verification_mail.ejs`;
+    // const templatePath = `${currentDirectory}/../templates/verification_mail.ejs`;
+    const templatePath=`<h3>Hi</h3>`
     console.log("Template path:", templatePath);
     const renderedContent = await ejs.renderFile(templatePath, {
       clientBaseUrl,
@@ -36,8 +34,6 @@ async function sendVerificationEmail(email, verification_token, fname) {
       fname,
       contactEmail,
     });
-
-    console.log("renderedContent", currentDirectory);
 
     const mailOptions = {
       from: process.env.NODEMAILER_USER,
