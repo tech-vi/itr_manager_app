@@ -31,6 +31,9 @@ async function sendVerificationEmail(email, verification_token, fname) {
       { clientBaseUrl, verification_token, fname, contactEmail }
     );
 
+
+    console.log(renderedContent)
+
     const mailOptions = {
       from: process.env.NODEMAILER_USER,
       to: email,
