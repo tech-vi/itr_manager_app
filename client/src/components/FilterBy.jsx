@@ -13,7 +13,7 @@ const FilterBy = ({
 }) => {
   const [showDropdown, setShowDropdown] = useState(false);
 
-  console.log(columnFilters);
+  // console.log(columnFilters);
 
   const toggleDropdown = () => setShowDropdown((prev) => !prev);
 
