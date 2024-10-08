@@ -2,15 +2,6 @@ import ejs from "ejs";
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
 
-// import { fileURLToPath } from "url";
-// import { dirname } from "path";
-// import path from "path";
-
-// const currentFilePath = import.meta.url;
-// console.log("currentFilePath", currentFilePath);
-// const currentDirectory = dirname(fileURLToPath(currentFilePath));
-// console.log("currentDirectory", currentDirectory);
-
 dotenv.config();
 
 const clientBaseUrl = process.env.CLIENT_APP_BASE_URL;
@@ -177,22 +168,6 @@ const verificationTemplate = `
 
 async function sendVerificationEmail(email, verification_token, fname) {
   try {
-    // const templatePath = `${currentDirectory}/../templates/verification_mail.ejs`;
-
-    // const templatePath = path.join(
-    //   process.cwd(),
-    //   "public/templates/verification_mail.ejs"
-    // );
-
-    // console.log("Template path:", templatePath);
-
-    // const renderedContent = await ejs.renderFile(templatePath, {
-    //   clientBaseUrl,
-    //   verification_token,
-    //   fname,
-    //   contactEmail,
-    // });
-
     const compiledTemplate = ejs.compile(verificationTemplate);
 
     const renderedContent = compiledTemplate({
