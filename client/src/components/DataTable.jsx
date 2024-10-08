@@ -31,11 +31,6 @@ const DataTable = ({ data, columns, isClient }) => {
   const [rowSelection, setRowSelection] = useState({});
   const [columnVisibility, setColumnVisibility] = useState({});
 
-  // const [financialYearFilter, setFinancialYearFilter] = useState("");
-  // const [itrFormTypeFilter, setItrFormTypeFilter] = useState("");
-  // const [itrFormStatusFilter, setItrFormStatusFilter] = useState("");
-  // const [feeStatusFilter, setFeeStatusFilter] = useState("");
-
   const table = useReactTable({
     data,
     columns,
@@ -69,8 +64,8 @@ const DataTable = ({ data, columns, isClient }) => {
     onColumnVisibilityChange: setColumnVisibility,
   });
 
-  console.log("columnFilters", columnFilters);
-  console.log("globalFilter", globalFilter);
+  // console.log("columnFilters", columnFilters);
+  // console.log("globalFilter", globalFilter);
 
   const selectedRows = table.getFilteredSelectedRowModel().rows.length;
   const totalRows = table.getFilteredRowModel().rows.length;
