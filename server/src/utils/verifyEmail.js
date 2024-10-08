@@ -2,6 +2,7 @@ import ejs from "ejs";
 import nodemailer from "nodemailer";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
+import path from "path";
 import dotenv from "dotenv";
 
 const currentFilePath = import.meta.url;
