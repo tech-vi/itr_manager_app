@@ -6,8 +6,9 @@ import path from "path";
 import dotenv from "dotenv";
 
 const currentFilePath = import.meta.url;
+console.log("currentFilePath", currentFilePath);
 const currentDirectory = dirname(fileURLToPath(currentFilePath));
-
+console.log("currentDirectory", currentDirectory);
 dotenv.config();
 
 const clientBaseUrl = process.env.CLIENT_APP_BASE_URL;
