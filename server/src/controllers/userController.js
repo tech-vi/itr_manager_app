@@ -58,14 +58,11 @@ const registerUser = async (req, res, next) => {
         user.fname
       );
       if (verificationEmailResponse.error) {
-        console.log(verificationEmailResponse.error)
         const err = new Error("Failed to send verification link.!");
         res.statusCode = 500;
         return next(err);
       }
-      res
-        .status(200)
-        .json({ message: "Verification mail sent.!" });
+      res.status(200).json({ message: "Verification mail sent.!" });
     }
   } catch (error) {
     res.status(500);
@@ -115,6 +112,8 @@ const loginUser = async (req, res, next) => {
         email: user.email,
         isAdmin: user.isAdmin,
         isVerified: user.isVerified,
+        fname: user.fname,
+        lname: user.lname,
       });
     } else {
       const verification_token = crypto.randomBytes(32).toString("hex");
@@ -138,10 +137,7 @@ const loginUser = async (req, res, next) => {
         res.statusCode = 500;
         return next(err);
       }
-      res
-        .status(200)
-        .json({ message: "Verification mail sent.!" });
-      //
+      res.status(200).json({ message: "Verification mail sent.!" });
     }
   } catch (error) {
     res.status(500);
@@ -336,9 +332,7 @@ const forgotPassword = async (req, res, next) => {
       res.statusCode = 500;
       return next(err);
     }
-    res
-      .status(200)
-      .json({ message: "Password reset mail sent.!" });
+    res.status(200).json({ message: "Password reset mail sent.!" });
   } catch (error) {
     res.status(500);
     const err = new Error("Internal Server Error.!");
