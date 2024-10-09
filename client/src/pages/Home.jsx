@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import logo from "/vi-logo.png";
 
 const Home = () => {
-  const { isLoggedIn } = useSelector((state) => state.auth);
-
+  const { isLoggedIn, user } = useSelector((state) => state.auth);
+  const greet = `Hello ${user?.fname}`;
   const title = isLoggedIn ? "Welcome back to " : "Welcome to ";
   const label = isLoggedIn ? "Go to Dashboard" : "Get Started";
   const to = isLoggedIn ? "/dashboard" : "/login";
@@ -27,8 +27,9 @@ const Home = () => {
           <Col xs={12} lg={6}>
             <div
               className="position-relative z-3 "
-              style={{ marginTop: "160px", color: "white" }}
+              style={{ marginTop: "100px", color: "white" }}
             >
+              <p className="fs-3">{greet}👋</p>
               <h1 className="hero-title fw-bold">
                 <span className="fs-4 fw-medium">{title}</span> <br /> Virtual
                 India.
