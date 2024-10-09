@@ -18,7 +18,7 @@ import { useState } from "react";
 const Header = () => {
   const expand = "md";
   const { user } = useSelector((state) => state.auth);
-
+  const greet = `Hello ${user?.fname}`;
   const [logoutUser] = useLogoutUserMutation();
 
   const [show, setShow] = useState(false);
@@ -139,9 +139,9 @@ const Header = () => {
               </NavDropdown.Item>
               <NavDropdown.Item as={Link} to="/settings">
                 Settings
-              </NavDropdown.Item>
-
-              <NavDropdown.Divider /> */}
+              </NavDropdown.Item> */}
+              <NavDropdown.Item>{greet}</NavDropdown.Item>
+              <NavDropdown.Divider />
               <NavDropdown.Item as={"button"} onClick={logoutHandler}>
                 Logout
               </NavDropdown.Item>
