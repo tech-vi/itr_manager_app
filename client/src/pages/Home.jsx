@@ -29,7 +29,7 @@ const Home = () => {
               className="position-relative z-3 "
               style={{ marginTop: "100px", color: "white" }}
             >
-              <p className="fs-3">{greet}👋</p>
+              {isLoggedIn && <p className="fs-3">{greet}👋</p>}
               <h1 className="hero-title fw-bold">
                 <span className="fs-4 fw-medium">{title}</span> <br /> Virtual
                 India.
