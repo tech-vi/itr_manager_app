@@ -256,6 +256,7 @@ const ClientForm = () => {
                     <Form.Control
                       type="text"
                       placeholder="Mobile"
+                      maxLength={10}
                       {...register("mobile_number")}
                       isInvalid={!!errors.mobile_number}
                     />
