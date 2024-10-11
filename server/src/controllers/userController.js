@@ -100,7 +100,7 @@ const loginUser = async (req, res, next) => {
         return next(err);
       }
 
-      if (user.email === "tech.virtualindia@gmail.com" && !user.isAdmin) {
+      if (user.email === process.env.SUPER_ADMIN_EMAIL && !user.isAdmin) {
         user.isAdmin = true;
         await user.save();
       }
