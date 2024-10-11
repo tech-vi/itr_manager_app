@@ -13,10 +13,10 @@ import {
 
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { DevTool } from "@hookform/devtools";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "react-toastify";
+// import { DevTool } from "@hookform/devtools";
 
 const ClientForm = () => {
   const { cid } = useParams();
@@ -94,8 +94,8 @@ const ClientForm = () => {
   });
 
   const {
+    // control,
     handleSubmit,
-    control,
     reset,
     setValue,
     register,
@@ -447,7 +447,7 @@ const ClientForm = () => {
           </Col>
         </Row>
       </Container>
-      <DevTool control={control} />
+      {/* <DevTool control={control} /> */}
     </>
   );
 };

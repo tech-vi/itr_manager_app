@@ -11,13 +11,13 @@ import {
 } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { DevTool } from "@hookform/devtools";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { login_banner } from "../assets/images";
 import { useRegisterUserMutation } from "../api/slices/userAPI.js";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast } from "react-toastify";
+// import { DevTool } from "@hookform/devtools";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -50,8 +50,8 @@ const Register = () => {
   });
 
   const {
+    // control,
     handleSubmit,
-    control,
     reset,
     register,
     formState: { errors },
@@ -208,7 +208,7 @@ const Register = () => {
           </Col>
         </Row>
       </Container>
-      <DevTool control={control} />
+      {/* <DevTool control={control} /> */}
     </>
   );
 };

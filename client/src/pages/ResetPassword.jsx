@@ -13,11 +13,11 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { DevTool } from "@hookform/devtools";
 import { toast } from "react-toastify";
 import { useResetPasswordMutation } from "../api/slices/userAPI.js";
 import { login_banner } from "../assets/images";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+// import { DevTool } from "@hookform/devtools";
 
 const ResetPassword = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -46,8 +46,8 @@ const ResetPassword = () => {
   });
 
   const {
+    // control,
     handleSubmit,
-    control,
     reset,
     register,
     formState: { errors },
@@ -187,7 +187,7 @@ const ResetPassword = () => {
           </Col>
         </Row>
       </Container>
-      <DevTool control={control} />
+      {/* <DevTool control={control} /> */}
     </>
   );
 };

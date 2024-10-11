@@ -11,7 +11,6 @@ import {
 } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { DevTool } from "@hookform/devtools";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useDispatch } from "react-redux";
@@ -21,6 +20,7 @@ import { useEffect, useState } from "react";
 import { useLoginUserMutation } from "../api/slices/userAPI.js";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast } from "react-toastify";
+// import { DevTool } from "@hookform/devtools";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -46,8 +46,8 @@ const Login = () => {
   });
 
   const {
+    // control,
     handleSubmit,
-    control,
     reset,
     register,
     formState: { errors },
@@ -181,7 +181,7 @@ const Login = () => {
           </Col>
         </Row>
       </Container>
-      <DevTool control={control} />
+      {/* <DevTool control={control} /> */}
     </>
   );
 };

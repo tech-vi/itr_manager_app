@@ -10,12 +10,12 @@ import {
 } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { DevTool } from "@hookform/devtools";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { login_banner } from "../assets/images";
 import { useForgotPasswordMutation } from "../api/slices/userAPI.js";
 import { toast } from "react-toastify";
+// import { DevTool } from "@hookform/devtools";
 
 const ForgotPassword = () => {
   const navigate = useNavigate();
@@ -33,8 +33,8 @@ const ForgotPassword = () => {
   });
 
   const {
+    // control,
     handleSubmit,
-    control,
     reset,
     register,
     formState: { errors },
@@ -129,7 +129,7 @@ const ForgotPassword = () => {
           </Col>
         </Row>
       </Container>
-      <DevTool control={control} />
+      {/* <DevTool control={control} /> */}
     </>
   );
 };
