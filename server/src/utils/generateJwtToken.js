@@ -6,12 +6,10 @@ const generateJwtToken = (res, id, cookieName = "token") => {
   });
 
   res.cookie(cookieName, token, {
-    // httpOnly: false,
     httpOnly: true,
     secure: process.env.NODE_ENV !== "development",
-    // sameSite: "strict",
     sameSite: process.env.NODE_ENV !== "development" ? "None" : "Strict",
-    maxAge: 3 * 24 * 60 * 60 * 1000, // 3 days
+    // maxAge: 3 * 24 * 60 * 60 * 1000,
   });
 };
 
