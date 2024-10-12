@@ -25,9 +25,9 @@ const RowActions = ({ data }) => {
     try {
       setLoading(true);
       const response = await removeITRFormStatus(data._id).unwrap();
-      console.log(response);
+      // console.log(response);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     } finally {
       setLoading(false);
       setOpen(false);
@@ -81,20 +81,20 @@ const RowActions = ({ data }) => {
 
   const onEdit = (data) => {
     setShow(true);
-    console.log(data);
+    // console.log(data);
   };
 
   const onSubmit = async (editedData) => {
-    console.log(editedData);
+    // console.log(editedData);
     try {
       const response = await editITRFormStatus({
         id: data._id,
         title: editedData.title,
       }).unwrap();
-      console.log(response);
+      // console.log(response);
       closeModal();
     } catch (error) {
-      console.error("Error updating itr form status:", error);
+      // console.error("Error updating itr form status:", error);
     }
   };
 

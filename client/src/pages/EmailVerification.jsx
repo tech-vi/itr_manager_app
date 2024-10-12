@@ -9,7 +9,7 @@ const EmailVerification = () => {
   const { data, error, isSuccess } = useVerifyEmailQuery({
     verification_token,
   });
-  console.log(data);
+  // console.log(data);
 
   return (
     <>

@@ -41,7 +41,6 @@ const DataTable = ({ data, columns, isClient }) => {
     // filterFns: {
     //   customFilterFn: (row, columnId, filterValue) => {
     //     if (!filterValue) return true;
-    //     console.log(row, columnId, filterValue);
     //     return row.original[columnId]?._id === filterValue;
     //   },
     // },

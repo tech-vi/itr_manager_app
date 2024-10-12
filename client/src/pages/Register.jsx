@@ -75,7 +75,7 @@ const Register = () => {
     try {
       await registerUser(data).unwrap();
     } catch (error) {
-      console.log("Error during register :", error);
+      // console.log("Error during register :", error);
     }
   };
 

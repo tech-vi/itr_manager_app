@@ -35,7 +35,7 @@ const Header = () => {
       dispatch(logout());
       navigate("/login", { replace: true });
     } catch (error) {
-      console.log("Error during logout :", error);
+      // console.log("Error during logout :", error);
     }
   };
 

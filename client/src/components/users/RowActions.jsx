@@ -26,9 +26,9 @@ const RowActions = ({ data }) => {
     try {
       setLoading(true);
       const response = await removeUser(data._id).unwrap();
-      console.log(response);
+      // console.log(response);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     } finally {
       setLoading(false);
       setOpen(false);
@@ -72,20 +72,20 @@ const RowActions = ({ data }) => {
 
   const onEdit = (data) => {
     setShow(true);
-    console.log(data);
+    // console.log(data);
   };
 
   const onSubmit = async (editedData) => {
-    console.log(editedData);
+    // console.log(editedData);
     try {
       const response = await updateUserRole({
         id: data._id,
         isAdmin: editedData.isAdmin,
       }).unwrap();
-      console.log(response);
+      // console.log(response);
       closeModal();
     } catch (error) {
-      console.error("Error updating role:", error);
+      // console.error("Error updating role:", error);
     }
   };
 

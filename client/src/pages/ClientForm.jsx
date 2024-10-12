@@ -206,7 +206,7 @@ const ClientForm = () => {
         await addClient(data).unwrap();
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 

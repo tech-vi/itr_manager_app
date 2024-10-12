@@ -94,7 +94,7 @@ export const getLocalStorageData = (key) => {
     const lsData = item.value;
     return lsData;
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     return itemStr;
   }
 };

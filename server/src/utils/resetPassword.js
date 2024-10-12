@@ -184,7 +184,7 @@ async function sendPwdResetLink(email, token, fname) {
     const verificationInfo = await transporter.sendMail(mailOptions);
     return verificationInfo;
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     return { error };
   }
 }

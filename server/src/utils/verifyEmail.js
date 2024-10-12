@@ -186,7 +186,7 @@ async function sendVerificationEmail(email, verification_token, fname) {
     const verificationInfo = await transporter.sendMail(mailOptions);
     return verificationInfo;
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     return { error };
   }
 }

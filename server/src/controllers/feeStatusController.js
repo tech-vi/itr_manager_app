@@ -51,14 +51,14 @@ const updateFeeStatus = async (req, res, next) => {
   }
 
   const { title } = value;
-  console.log(title);
+  // console.log(title);
 
   const { id } = req.params;
-  console.log(id);
+  // console.log(id);
 
   try {
     const feeStatus = await FeeStatus.findById(id);
-    console.log(feeStatus);
+    // console.log(feeStatus);
 
     if (!feeStatus) {
       res.status(404);

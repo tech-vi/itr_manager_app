@@ -71,7 +71,7 @@ const Login = () => {
     try {
       await loginUser(data).unwrap();
     } catch (error) {
-      console.log("Error during login :", error);
+      // console.log("Error during login :", error);
     }
   };
 

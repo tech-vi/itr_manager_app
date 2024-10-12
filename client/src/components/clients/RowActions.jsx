@@ -34,7 +34,7 @@ const RowActions = ({ data }) => {
     try {
       await removeClient(data._id).unwrap();
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     } finally {
       setOpen(false);
     }

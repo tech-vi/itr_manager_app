@@ -97,7 +97,7 @@ const ITRFormTypes = () => {
       await addITRFormType(data).unwrap();
       closeModal();
     } catch (error) {
-      console.error("Error submitting ITR form type:", error);
+      // console.error("Error submitting ITR form type:", error);
     }
   };
 

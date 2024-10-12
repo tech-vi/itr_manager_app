@@ -57,7 +57,7 @@ const ForgotPassword = () => {
     try {
       await forgotPassword(data).unwrap();
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 

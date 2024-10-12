@@ -97,7 +97,7 @@ const ITRFormStatuses = () => {
       await addITRFormStatus(data).unwrap();
       closeModal();
     } catch (error) {
-      console.error("Error submitting ITR form status:", error);
+      // console.error("Error submitting ITR form status:", error);
     }
   };
 

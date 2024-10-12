@@ -96,7 +96,7 @@ const FeeStatuses = () => {
       await addFeeStatus(data).unwrap();
       closeModal();
     } catch (error) {
-      console.error("Error submitting fee status:", error);
+      // console.error("Error submitting fee status:", error);
     }
   };
 

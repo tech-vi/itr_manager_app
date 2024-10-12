@@ -112,7 +112,7 @@ const FinancialYears = () => {
       await addFinancialYear(data).unwrap();
       closeModal();
     } catch (error) {
-      console.error("Error submitting financial year:", error);
+      // console.error("Error submitting financial year:", error);
     }
   };
 
