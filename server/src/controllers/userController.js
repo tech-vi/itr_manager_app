@@ -100,7 +100,7 @@ const loginUser = async (req, res, next) => {
         return next(err);
       }
       if (user.email === process.env.SUPER_ADMIN_EMAIL && !user.isAdmin) {
-        console.log(user.email, process.env.SUPER_ADMIN_EMAIL);
+        // console.log(user.email, process.env.SUPER_ADMIN_EMAIL);
         user.isAdmin = true;
         await user.save();
       }
