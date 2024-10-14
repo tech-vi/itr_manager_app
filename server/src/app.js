@@ -20,7 +20,7 @@ const PORT = 3000;
 const app = express();
 console.log(process.env.CLIENT_APP_BASE_URL);
 
-// const whitelist = [process.env.CLIENT_APP_BASE_URL, "http://localhost:5173"];
+const whitelist = [process.env.CLIENT_APP_BASE_URL, "http://localhost:5173"];
 
 // const corsOptions = {
 //   origin: function (origin, callback) {
