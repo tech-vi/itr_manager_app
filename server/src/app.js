@@ -18,21 +18,8 @@ connectDB();
 const PORT = 3000;
 
 const app = express();
-console.log(process.env.CLIENT_APP_BASE_URL);
 
 const whitelist = [process.env.CLIENT_APP_BASE_URL, "http://localhost:5173"];
-
-// const corsOptions = {
-//   origin: function (origin, callback) {
-//     if (whitelist.indexOf(origin) !== -1 || !origin) {
-//       callback(null, true);
-//     } else {
-//       callback(new Error("Not allowed by CORS"));
-//     }
-//   },
-//   credentials: true,
-//   optionsSuccessStatus: 200,
-// };
 
 const corsOptions = {
   origin: function (origin, callback) {
@@ -45,13 +32,6 @@ const corsOptions = {
   credentials: true,
   optionsSuccessStatus: 200,
 };
-
-// const corsOptions = {
-//   origin: true,
-//   credentials: true,
-//   optionsSuccessStatus: 200,
-// };
-
 
 app.use(cors(corsOptions));
 
@@ -74,3 +54,21 @@ app.use(errorHandler);
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+// const corsOptions = {
+//   origin: function (origin, callback) {
+//     if (whitelist.indexOf(origin) !== -1 || !origin) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error("Not allowed by CORS"));
+//     }
+//   },
+//   credentials: true,
+//   optionsSuccessStatus: 200,
+// };
+
+// const corsOptions = {
+//   origin: true,
+//   credentials: true,
+//   optionsSuccessStatus: 200,
+// };
