@@ -99,10 +99,8 @@ const loginUser = async (req, res, next) => {
         const err = new Error("Invalid password.!");
         return next(err);
       }
-      console.log(process.env.SUPER_ADMIN_EMAIL);
-      console.log(user.email);
       if (user.email === process.env.SUPER_ADMIN_EMAIL && !user.isAdmin) {
-        console.log("enter as admin");
+        console.log(user.email, process.env.SUPER_ADMIN_EMAIL);
         user.isAdmin = true;
         await user.save();
       }
