@@ -4,7 +4,7 @@ import { useGetAllClientsQuery } from "../api/slices/clientAPI.js";
 import { useGetAllFinancialYearsQuery } from "../api/slices/financialYearAPI.js";
 import { useGetAllITRFormTypesQuery } from "../api/slices/itrFormTypeAPI.js";
 import { useGetAllITRFormStatusesQuery } from "../api/slices/itrFormStatusAPI.js";
-import { BarChart, DoughnutChart } from "../components/index.js";
+import { BarChart, DoughnutChart, Loader } from "../components/index.js";
 import {
   filterClients,
   getITRStatusCounts,
@@ -116,7 +116,6 @@ const Dashboard = () => {
 
   // # doughnut chart
 
- 
   const doughnutData = {
     labels: itrFormStatuses,
     datasets: [
@@ -155,6 +154,15 @@ const Dashboard = () => {
       },
     },
   };
+
+  if (
+    !clientData ||
+    !financialYearData ||
+    !itrFormTypeData ||
+    !itrFormStatusData
+  ) {
+    return <Loader />;
+  }
 
   return (
     <>
