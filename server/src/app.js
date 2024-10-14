@@ -35,10 +35,22 @@ console.log(process.env.CLIENT_APP_BASE_URL);
 // };
 
 const corsOptions = {
-  origin: true, // Accept requests from any origin for debugging
+  origin: function (origin, callback) {
+    if (whitelist.some((url) => origin && origin.startsWith(url)) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true,
   optionsSuccessStatus: 200,
 };
+
+// const corsOptions = {
+//   origin: true,
+//   credentials: true,
+//   optionsSuccessStatus: 200,
+// };
 
 
 app.use(cors(corsOptions));
