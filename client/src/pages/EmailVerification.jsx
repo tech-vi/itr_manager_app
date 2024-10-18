@@ -2,14 +2,23 @@ import { Link, useParams } from "react-router-dom";
 import { Card, Col, Container, Image, Row } from "react-bootstrap";
 import { useVerifyEmailQuery } from "../api/slices/userAPI.js";
 import { not_verified, verified } from "../assets/images/index.js";
+import { Loader } from "../components/index.js";
+import { Error } from "./index.js";
 
 const EmailVerification = () => {
   const { verification_token } = useParams();
 
-  const { data, error, isSuccess } = useVerifyEmailQuery({
+  const { isLoading, isSuccess, isError, error } = useVerifyEmailQuery({
     verification_token,
   });
-  // console.log(data);
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  if (isError) {
+    return <Error error={error} />;
+  }
 
   return (
     <>
