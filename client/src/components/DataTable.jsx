@@ -150,16 +150,18 @@ const DataTable = ({ data, columns, isClient }) => {
                 {"All"}
               </option>
             </Form.Select>
-            {isClient && <ColumnVisibilityFilter table={table} />}
           </Stack>
         </Col>
         <Col xs={12} md={4} lg={3} className="d-md-none d-lg-block"></Col>
         <Col xs={12} md={4} lg={3} className="mb-3">
           <Stack direction="horizontal" className="justify-content-end">
             {isClient && (
-              <Button variant="success" onClick={handleExport}>
-                <PiMicrosoftExcelLogoDuotone /> Download
-              </Button>
+              <>
+                <Button variant="success" onClick={handleExport}>
+                  <PiMicrosoftExcelLogoDuotone /> Download
+                </Button>
+                <ColumnVisibilityFilter table={table} />
+              </>
             )}
           </Stack>
         </Col>
