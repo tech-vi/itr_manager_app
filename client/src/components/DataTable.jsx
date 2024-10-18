@@ -154,7 +154,7 @@ const DataTable = ({ data, columns, isClient }) => {
         </Col>
         <Col xs={12} md={4} lg={3} className="d-md-none d-lg-block"></Col>
         <Col xs={12} md={4} lg={3} className="mb-3">
-          <Stack direction="horizontal" className="justify-content-end">
+          <Stack direction="horizontal" className="justify-content-between">
             {isClient && (
               <>
                 <Button variant="success" onClick={handleExport}>
