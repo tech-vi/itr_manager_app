@@ -38,12 +38,6 @@ const DataTable = ({ data, columns, isClient }) => {
     getFilteredRowModel: getFilteredRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
-    // filterFns: {
-    //   customFilterFn: (row, columnId, filterValue) => {
-    //     if (!filterValue) return true;
-    //     return row.original[columnId]?._id === filterValue;
-    //   },
-    // },
 
     state: {
       columnFilters,
@@ -99,29 +93,6 @@ const DataTable = ({ data, columns, isClient }) => {
     writeFile(workbook, "clients_data.xlsx");
   };
 
-  // useEffect(() => {
-  //   setColumnFilters(() => {
-  //     const filters = [
-  //       financialYearFilter && {
-  //         id: "financial_year",
-  //         value: financialYearFilter,
-  //       },
-  //       itrFormTypeFilter && { id: "itr_form_type", value: itrFormTypeFilter },
-  //       itrFormStatusFilter && {
-  //         id: "itr_form_status",
-  //         value: itrFormStatusFilter,
-  //       },
-  //       feeStatusFilter && { id: "fee_status", value: feeStatusFilter },
-  //     ].filter(Boolean);
-  //     return filters;
-  //   });
-  // }, [
-  //   financialYearFilter,
-  //   itrFormTypeFilter,
-  //   itrFormStatusFilter,
-  //   feeStatusFilter,
-  // ]);
-
   return (
     <div>
       <Row className="mb-3">
@@ -150,17 +121,17 @@ const DataTable = ({ data, columns, isClient }) => {
                 {"All"}
               </option>
             </Form.Select>
+            {isClient && <ColumnVisibilityFilter table={table} />}
           </Stack>
         </Col>
         <Col xs={12} md={4} lg={3} className="d-md-none d-lg-block"></Col>
         <Col xs={12} md={4} lg={3} className="mb-3">
-          <Stack direction="horizontal" className="justify-content-between">
+          <Stack direction="horizontal" className="justify-content-end">
             {isClient && (
               <>
                 <Button variant="success" onClick={handleExport}>
                   <PiMicrosoftExcelLogoDuotone /> Download
                 </Button>
-                <ColumnVisibilityFilter table={table} />
               </>
             )}
           </Stack>
@@ -177,26 +148,26 @@ const DataTable = ({ data, columns, isClient }) => {
                     key={header.id}
                     style={{
                       whiteSpace: "nowrap",
-                      ...(header.column.getCanSort()
-                        ? { cursor: "pointer" }
-                        : {}),
                     }}
-                    onClick={header.column.getToggleSortingHandler()}
                   >
                     {flexRender(
                       header.column.columnDef.header,
                       header.getContext()
                     )}
-
-                    {header.column.getIsSorted() === "asc" ? (
-                      <FcAlphabeticalSortingAz className="mx-3" />
-                    ) : header.column.getIsSorted() === "desc" ? (
-                      <FcAlphabeticalSortingZa className="mx-3" />
-                    ) : (
-                      header.column.getCanSort() && (
-                        <LuChevronsUpDown className="mx-3" />
-                      )
-                    )}
+                    <span
+                      onClick={header.column.getToggleSortingHandler()}
+                      style={{ cursor: "pointer", whiteSpace: "nowrap" }}
+                    >
+                      {header.column.getIsSorted() === "asc" ? (
+                        <FcAlphabeticalSortingAz className="mx-3" />
+                      ) : header.column.getIsSorted() === "desc" ? (
+                        <FcAlphabeticalSortingZa className="mx-3" />
+                      ) : (
+                        header.column.getCanSort() && (
+                          <LuChevronsUpDown className="mx-3" />
+                        )
+                      )}
+                    </span>
                   </th>
                 ))}
               </tr>

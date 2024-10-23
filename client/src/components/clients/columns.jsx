@@ -2,6 +2,7 @@ import { convertUTCtoIST } from "../../utils/helper";
 import RowActions from "./RowActions";
 import FilterBy from "../FilterBy";
 import { Form } from "react-bootstrap";
+import { FilterByDate } from "..";
 
 // # higher order function method
 
@@ -55,7 +56,6 @@ export const generateColumns = ({
     enableSorting: false,
   },
   {
-    // header: "Financial Year",
     header: ({ table, column }) => {
       const { columnFilters } = table.getState();
       const { setColumnFilters } = table;
@@ -72,7 +72,6 @@ export const generateColumns = ({
     },
     accessorKey: "financial_year",
     accessorFn: (row) => `${row.financial_year?.title}`,
-    // filterFn: "customFilterFn",
     enableSorting: false,
   },
   {
@@ -81,7 +80,6 @@ export const generateColumns = ({
     enableSorting: false,
   },
   {
-    // header: "ITR Form Type",
     header: ({ table, column }) => {
       const { columnFilters } = table.getState();
       const { setColumnFilters } = table;
@@ -98,11 +96,9 @@ export const generateColumns = ({
     },
     accessorKey: "itr_form_type",
     accessorFn: (row) => `${row.itr_form_type?.title}`,
-    // filterFn: "customFilterFn",
     enableSorting: false,
   },
   {
-    // header: "ITR Form Status",
     header: ({ table, column }) => {
       const { columnFilters } = table.getState();
       const { setColumnFilters } = table;
@@ -119,11 +115,9 @@ export const generateColumns = ({
     },
     accessorKey: "itr_form_status",
     accessorFn: (row) => `${row.itr_form_status?.title}`,
-    // filterFn: "customFilterFn",
     enableSorting: false,
   },
   {
-    // header: "Fee Status",
     header: ({ table, column }) => {
       const { columnFilters } = table.getState();
       const { setColumnFilters } = table;
@@ -140,7 +134,6 @@ export const generateColumns = ({
     },
     accessorKey: "fee_status",
     accessorFn: (row) => `${row.fee_status?.title}`,
-    // filterFn: "customFilterFn",
     enableSorting: false,
   },
   {
@@ -167,12 +160,48 @@ export const generateColumns = ({
     enableSorting: false,
   },
   {
-    header: "Created At",
-    accessorFn: (row) => `${convertUTCtoIST(row.createdAt)}`,
+    header: ({ table, column }) => {
+      const { columnFilters } = table.getState();
+      const { setColumnFilters } = table;
+      return (
+        <div className="float-start">
+          <FilterByDate
+            columnFilters={columnFilters}
+            setColumnFilters={setColumnFilters}
+            columnId="createdAt"
+            label="Created At"
+            column={column}
+          />
+        </div>
+      );
+    },
+    accessorKey: "createdAt",
+    accessorFn: (row) => {
+      // console.log(row);
+      return `${convertUTCtoIST(row.createdAt)}`;
+    },
   },
   {
-    header: "Updated At",
-    accessorFn: (row) => `${convertUTCtoIST(row.updatedAt)}`,
+    header: ({ table, column }) => {
+      const { columnFilters } = table.getState();
+      const { setColumnFilters } = table;
+      return (
+        <div className="float-start">
+          <FilterByDate
+            columnFilters={columnFilters}
+            setColumnFilters={setColumnFilters}
+            columnId="updatedAt"
+            label="Updated At"
+            column={column}
+          />
+        </div>
+      );
+    },
+    accessorKey: "updatedAt",
+    accessorFn: (row) => {
+      // console.log(row);
+      return `${convertUTCtoIST(row.updatedAt)}`;
+    },
   },
   {
     accessorKey: "Actions",
