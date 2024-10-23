@@ -6,7 +6,8 @@ import logo from "/vi-logo.png";
 
 const Home = () => {
   const { isLoggedIn, user } = useSelector((state) => state.auth);
-  const greet = `Hello ${user?.fname}`;
+  // const greet = `Hello ${user?.fname}`;
+  const greet = `Hello ${user?.value?.fname}`;
   const title = isLoggedIn ? "Welcome back to " : "Welcome to ";
   const label = isLoggedIn ? "Go to Dashboard" : "Get Started";
   const to = isLoggedIn ? "/dashboard" : "/login";
