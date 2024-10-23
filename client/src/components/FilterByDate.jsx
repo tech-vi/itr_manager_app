@@ -3,8 +3,6 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import { BsFilter } from "react-icons/bs";
 
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 import { convertUTCtoISTDate } from "../utils/helper";
 
 const FilterByDate = ({
@@ -15,12 +13,11 @@ const FilterByDate = ({
   column,
 }) => {
   const [showDropdown, setShowDropdown] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedDate, setSelectedDate] = useState("");
 
   const toggleDropdown = () => setShowDropdown((prev) => !prev);
 
   const handleFilterSelection = (dateFilter) => {
-    // console.log(dateFilter);
     setColumnFilters((prevFilters) => {
       const existingFilter = prevFilters.find(
         (prevFilter) => prevFilter.id === columnId
@@ -78,12 +75,15 @@ const FilterByDate = ({
             <Dropdown.Item onClick={clearFilter}>Clear Filter</Dropdown.Item>
 
             <div className="px-3 py-2">
-              <DatePicker
-                selected={selectedDate}
-                onChange={handleDateSelection}
-                dateFormat="yyyy-MM-dd"
-                placeholderText="Select date"
+              <input
+                type="date"
+                value={selectedDate}
+                onChange={(e) => {
+                  handleDateSelection(e.target.value);
+                  console.log(e.target.value);
+                }}
                 className="form-control"
+                placeholder="Select date"
               />
             </div>
           </Dropdown.Menu>
