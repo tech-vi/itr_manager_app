@@ -13,6 +13,7 @@ export const DoughnutChart = lazy(() => import("./charts/DoughnutChart"));
 export const DataTable = lazy(() => import("./DataTable"));
 export const SearchFilter = lazy(() => import("./SearchFilter"));
 export const FilterBy = lazy(() => import("./FilterBy"));
+export const FilterByDate = lazy(() => import("./FilterByDate"));
 export const AdvancedPagination = lazy(() => import("./AdvancedPagination"));
 export const SimplePagination = lazy(() => import("./SimplePagination"));
 export const ColumnVisibilityFilter = lazy(() =>
