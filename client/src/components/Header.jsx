@@ -18,7 +18,9 @@ import { useState } from "react";
 const Header = () => {
   const expand = "md";
   const { user } = useSelector((state) => state.auth);
-  const greet = `Hello ${user?.fname}`;
+  // const greet = `Hello ${user?.fname}`;
+  const greet = `Hello ${user?.value?.fname}`;
+
   const [logoutUser] = useLogoutUserMutation();
 
   const [show, setShow] = useState(false);
@@ -47,7 +49,6 @@ const Header = () => {
             <Image className="brand" src={logo} rounded alt="VI" />
           </Link>
           <Navbar.Offcanvas
-            // style={{ backgroundColor: "rgba(0,0,0,0.7)", color: "#fff" }}
             show={show}
             onHide={handleClose}
             id={`offcanvasNavbar-expand-${expand}`}
@@ -68,10 +69,9 @@ const Header = () => {
                   Clients
                 </Nav.Link>
                 <NavDropdown
-                  // style={{ backgroundColor: "transparent", color: "#fff" }}
                   title="More"
                   id="basic-nav-dropdown"
-                  className={user.isAdmin ? "d-block" : "d-none"}
+                  className={user?.value?.isAdmin ? "d-block" : "d-none"}
                 >
                   <NavDropdown.Item
                     as={NavLink}
@@ -134,12 +134,6 @@ const Header = () => {
               align={"end"}
               id="collapsible-nav-dropdown"
             >
-              {/* <NavDropdown.Item as={Link} to="/profile">
-                Profile
-              </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/settings">
-                Settings
-              </NavDropdown.Item> */}
               <NavDropdown.Item>{greet}</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item as={"button"} onClick={logoutHandler}>

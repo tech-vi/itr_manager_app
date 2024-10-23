@@ -5,7 +5,7 @@ import { BsFilter } from "react-icons/bs";
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { convertUTCtoISTDate } from "../utils/helper.js";
+import { convertUTCtoISTDate } from "../utils/helper";
 
 const FilterByDate = ({
   columnFilters,
@@ -20,7 +20,7 @@ const FilterByDate = ({
   const toggleDropdown = () => setShowDropdown((prev) => !prev);
 
   const handleFilterSelection = (dateFilter) => {
-    console.log(dateFilter);
+    // console.log(dateFilter);
     setColumnFilters((prevFilters) => {
       const existingFilter = prevFilters.find(
         (prevFilter) => prevFilter.id === columnId

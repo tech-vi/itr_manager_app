@@ -3,7 +3,9 @@ import { Navigate, Outlet } from "react-router-dom";
 
 const AdminRoutes = () => {
   const { user } = useSelector((state) => state.auth);
-  return user && user.isAdmin ? <Outlet /> : <Navigate to="/login" replace />;
+  // return user && user?.isAdmin ? <Outlet /> : <Navigate to="/login" replace />;
+  return user && user?.value?.isAdmin ? <Outlet /> : <Navigate to="/login" replace />;
+
 };
 
 export default AdminRoutes;

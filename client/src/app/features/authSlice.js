@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-// import { setLocalStorageData } from "../../utils/helper.js";
+import { setLocalStorageData } from "../../utils/helper.js";
 
 const user = JSON.parse(localStorage.getItem("vi")) || null;
 
@@ -13,10 +13,11 @@ export const userAuthSlice = createSlice({
   initialState,
   reducers: {
     login: (state, action) => {
-      state.user = action.payload;
+      // state.user = action.payload;
+      state.user = { value: action.payload };
       state.isLoggedIn = true;
-      localStorage.setItem("vi", JSON.stringify(action.payload));
-      // setLocalStorageData("vi", action.payload, 3);
+      // localStorage.setItem("vi", JSON.stringify(action.payload));
+      setLocalStorageData("vi", action.payload, 7);
     },
     logout: (state) => {
       state.user = null;
