@@ -7,7 +7,6 @@ import { useGetAllFinancialYearsQuery } from "../api/slices/financialYearAPI.js"
 import { useGetAllITRFormTypesQuery } from "../api/slices/itrFormTypeAPI.js";
 import { useGetAllITRFormStatusesQuery } from "../api/slices/itrFormStatusAPI.js";
 import { useGetAllFeeStatusesQuery } from "../api/slices/feeStatusAPI.js";
-// import { columns } from "../components/clients/columns.jsx";
 import { generateColumns } from "../components/clients/columns.jsx";
 import { useMemo } from "react";
 
@@ -28,13 +27,6 @@ const Clients = () => {
       }),
     [financialYearData, itrFormTypeData, itrFormStatusData, feeStatusData]
   );
-
-  // const columns = generateColumns({
-  //   financialYearData,
-  //   itrFormTypeData,
-  //   itrFormStatusData,
-  //   feeStatusData,
-  // });
 
   if (isLoading) {
     return <Loader />;
