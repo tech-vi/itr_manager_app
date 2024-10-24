@@ -80,7 +80,7 @@ const FilterByDate = ({
                 value={selectedDate}
                 onChange={(e) => {
                   handleDateSelection(e.target.value);
-                  console.log(e.target.value);
+                  // console.log(e.target.value);
                 }}
                 className="form-control"
                 placeholder="Select date"
