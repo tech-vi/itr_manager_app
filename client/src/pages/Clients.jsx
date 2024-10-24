@@ -11,11 +11,66 @@ import { generateColumns } from "../components/clients/columns.jsx";
 import { useMemo } from "react";
 
 const Clients = () => {
-  const { data: allData, isLoading, isError, error } = useGetAllClientsQuery();
-  const { data: financialYearData } = useGetAllFinancialYearsQuery();
-  const { data: itrFormTypeData } = useGetAllITRFormTypesQuery();
-  const { data: itrFormStatusData } = useGetAllITRFormStatusesQuery();
-  const { data: feeStatusData } = useGetAllFeeStatusesQuery();
+  // const { data: clientsData, isLoading, isError, error } = useGetAllClientsQuery();
+  // const { data: financialYearData } = useGetAllFinancialYearsQuery();
+  // const { data: itrFormTypeData } = useGetAllITRFormTypesQuery();
+  // const { data: itrFormStatusData } = useGetAllITRFormStatusesQuery();
+  // const { data: feeStatusData } = useGetAllFeeStatusesQuery();
+
+  const {
+    data: clientsData,
+    isLoading: isClientsLoading,
+    isError: isClientsError,
+    error: clientsError,
+  } = useGetAllClientsQuery();
+  const {
+    data: financialYearData,
+    isLoading: isFinancialYearsLoading,
+    isError: isFinancialYearsError,
+    error: financialYearsError,
+  } = useGetAllFinancialYearsQuery();
+  const {
+    data: itrFormTypeData,
+    isLoading: isItrFormTypesLoading,
+    isError: isItrFormTypesError,
+    error: itrFormTypesError,
+  } = useGetAllITRFormTypesQuery();
+  const {
+    data: itrFormStatusData,
+    isLoading: isItrFormStatusesLoading,
+    isError: isItrFormStatusesError,
+    error: itrFormStatusesError,
+  } = useGetAllITRFormStatusesQuery();
+  const {
+    data: feeStatusData,
+    isLoading: isFeeStatusesLoading,
+    isError: isFeeStatusesError,
+    error: feeStatusesError,
+  } = useGetAllFeeStatusesQuery();
+
+  // Combine all loading states
+  const isLoading =
+    isClientsLoading ||
+    isFinancialYearsLoading ||
+    isItrFormTypesLoading ||
+    isItrFormStatusesLoading ||
+    isFeeStatusesLoading;
+
+  // Combine all error states
+  const isError =
+    isClientsError ||
+    isFinancialYearsError ||
+    isItrFormTypesError ||
+    isItrFormStatusesError ||
+    isFeeStatusesError;
+
+  // Extract the first error to display if any
+  const error =
+    clientsError ||
+    financialYearsError ||
+    itrFormTypesError ||
+    itrFormStatusesError ||
+    feeStatusesError;
 
   const columns = useMemo(
     () =>
@@ -56,7 +111,7 @@ const Clients = () => {
           <Col>
             <Stack className="mt-3">
               <DataTable
-                data={allData || []}
+                data={clientsData || []}
                 columns={columns}
                 isClient={true}
               />
