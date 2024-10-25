@@ -57,7 +57,7 @@ const DataTable = ({ data, columns, isClient }) => {
     onColumnVisibilityChange: setColumnVisibility,
   });
 
-  // console.log("columnFilters", columnFilters);
+  console.log("columnFilters", columnFilters);
   // console.log("globalFilter", globalFilter);
 
   const selectedRows = table.getFilteredSelectedRowModel().rows.length;

@@ -185,6 +185,7 @@ export const generateColumns = ({
     header: ({ table, column }) => {
       const { columnFilters } = table.getState();
       const { setColumnFilters } = table;
+      // console.log(column);
       return (
         <div className="float-start">
           <FilterByDate
@@ -196,6 +197,20 @@ export const generateColumns = ({
           />
         </div>
       );
+    },
+    filterFn: (row, columnId, filterValue) => {
+      if (!filterValue) return true;
+
+      const selectedDate = filterValue;
+      const rowCreatedAt = convertUTCtoIST(row.original.createdAt).split(
+        ","
+      )[0];
+      const rowUpdatedAt = convertUTCtoIST(row.original.updatedAt).split(
+        ","
+      )[0];
+      // console.log({ selectedDate, rowUpdatedAt, rowCreatedAt });
+
+      return rowUpdatedAt === selectedDate && rowUpdatedAt !== rowCreatedAt;
     },
     accessorKey: "updatedAt",
     accessorFn: (row) => {
