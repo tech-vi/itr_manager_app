@@ -169,7 +169,7 @@ export const generateColumns = ({
             columnFilters={columnFilters}
             setColumnFilters={setColumnFilters}
             columnId="createdAt"
-            label="Created At"
+            label="Added At"
             column={column}
           />
         </div>
@@ -192,7 +192,7 @@ export const generateColumns = ({
             columnFilters={columnFilters}
             setColumnFilters={setColumnFilters}
             columnId="updatedAt"
-            label="Updated At"
+            label="Edited At"
             column={column}
           />
         </div>
