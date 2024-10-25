@@ -4,6 +4,14 @@ import PropTypes from "prop-types";
 
 const ColumnVisibilityFilter = ({ table }) => {
   const nonHideableColumns = ["select", "Serial No", "actions"];
+  const customLabels = {
+    financial_year: "Financial Year",
+    itr_form_type: "ITR Form Type",
+    itr_form_status: "ITR Form Status",
+    fee_status: "Fee Status",
+    createdAt: "Added At",
+    updatedAt: "Edited At",
+  };
   return (
     <>
       <Stack direction="horizontal" className="justify-content-end">
@@ -29,6 +37,7 @@ const ColumnVisibilityFilter = ({ table }) => {
                   column.getCanHide() && !nonHideableColumns.includes(column.id)
               )
               .map((column) => {
+                const label = customLabels[column.id] || column.id;
                 return (
                   <Dropdown.Item
                     key={column.id}
@@ -37,7 +46,7 @@ const ColumnVisibilityFilter = ({ table }) => {
                   >
                     <Form.Check
                       type="checkbox"
-                      label={column.id}
+                      label={label}
                       className="text-capitalize"
                       checked={column.getIsVisible()}
                       onChange={(e) =>
