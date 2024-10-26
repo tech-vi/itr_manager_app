@@ -133,9 +133,9 @@ const RowActions = ({ data }) => {
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
-          <Dropdown.Item as={"button"} onClick={() => onCopy(data._id)}>
+          {/* <Dropdown.Item as={"button"} onClick={() => onCopy(data._id)}>
             Copy ID
-          </Dropdown.Item>
+          </Dropdown.Item> */}
           <Dropdown.Item as={"button"} onClick={() => onEdit(data)}>
             Edit
           </Dropdown.Item>

@@ -113,14 +113,14 @@ const RowActions = ({ data }) => {
       />
 
       <Stack direction="horizontal" gap={1}>
-        <Button
+        {/* <Button
           variant="light"
           size="sm"
           title="Copy ID"
           onClick={() => onCopy(data._id)}
         >
           <IoCopyOutline style={{ fontSize: "20px" }} />
-        </Button>
+        </Button> */}
         <Button
           variant="light"
           size="sm"
