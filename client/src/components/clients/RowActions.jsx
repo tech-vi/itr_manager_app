@@ -58,8 +58,11 @@ const RowActions = ({ data }) => {
         <Button
           variant="light"
           size="sm"
-          title="Copy ID"
-          onClick={() => onCopy(data._id)}
+          title="Copy PAN"
+          onClick={() => {
+            // onCopy(data._id);
+            onCopy(data.pan_number);
+          }}
         >
           <IoCopyOutline style={{ fontSize: "20px" }} />
         </Button>
